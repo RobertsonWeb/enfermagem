@@ -1,4 +1,4 @@
-# Projeto de pesquisa de alunos dos cursos de Sistemas de Informação e Enfermagem
+# Projeto de pesquisa de alunos dos cursos de Sistemas de Informação com o Programa de Mestrado em Saúde/Enfermagem
 
 ## Preparando o ambiente para desenvolvimento
 > ***Ocorrência:*** A cada nova instalação do Sistema Operacional.
@@ -119,6 +119,8 @@ python manage.py runserver
 #acessando via navegador
 http://localhost:8000
 ```
+
+
 ## Criar um modelo para persistir no Banco de Dados, Instalando a app no Django Admin (Painel), Buscando os registros do modelo numa view e mostrando no HTML
 ```shell
 #edite o arquivo core/models.py adicionando a classe do novo modelo conforme o exemplo:
