@@ -76,9 +76,9 @@ python manage.py startapp core
 #Criacao da view responsável pela exibição da home/index na app core
 #edite o arquivo core/views.py adicione a seguinte função:
 def home(request):
-return render(request, 'core/home.html')
+	return render(request, 'core/home.html')
 
-#crie o home.html em core/templates/core/home.html
+#crie o home.html em core/templates/core/home.html (será preciso criar os diretórios)
 
 #crie o arquivo urls.py em: core/urls.py Ele é responsável pela identificação da view responsável para cada URL pertencente a app core
 touch core/urls.py
@@ -88,18 +88,18 @@ from django.conf.urls import url
 from .views import home
 
 urlpatterns = [
-url(r'^$', home, name='home')
+	url(r'^$', home, name='home')
 ]
 
 #instale a app core no projeto editando o arquivo projeto/settings.py adicionando na lista INSTALLED_APPS como no exemplo:
 INSTALLED_APPS = [
-'django.contrib.admin',
-'django.contrib.auth',
-'django.contrib.contenttypes',
-'django.contrib.sessions',
-'django.contrib.messages',
-'django.contrib.staticfiles',
-'core',
+	'django.contrib.admin',
+	'django.contrib.auth',
+	'django.contrib.contenttypes',
+	'django.contrib.sessions',
+	'django.contrib.messages',
+	'django.contrib.staticfiles',
+	'core',
 ]
 
 #habilite o gerenciador de URLs do projeto para trabalhar com as URLs da app core, para isto, edite o arquivo projeto/urls.py importando o urls do core, veja o exemplo:
@@ -107,13 +107,13 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-url(r'^admin/', admin.site.urls),
-url(r'', include('core.urls'))
+	url(r'^admin/', admin.site.urls),
+	url(r'', include('core.urls'))
 ]
 
 #neste ponto a sua home já pode ser exibida no navegador
 
-#rodando o servidor web de desenvolvimento
+#rodando o servidor web de desenvolvimento (dentro do diretório projeto)
 python manage.py runserver
 
 #acessando via navegador
