@@ -1,8 +1,5 @@
-Projeto de pesquisa de alunos dos cursos de Sistemas de Informação e Enfermagem
+# Projeto de pesquisa de alunos dos cursos de Sistemas de Informação e Enfermagem
 
-============
-
-# Dicas de Python/Django
 ## Preparando o ambiente para desenvolvimento
 > ***Ocorrência:*** A cada nova instalação do Sistema Operacional.
 
@@ -58,6 +55,9 @@ pip freeze > requirements.txt
 
 #Iniciando um projeto Django
 django_admin.py startproject projeto
+
+#Acessando o diretório projeto
+cd projeto
 
 #Configurando a linguagem e data/hora do projeto. Edite o arquivo: projeto/settings.py
 LANGUAGE_CODE = 'pt-br'
