@@ -74,9 +74,17 @@ python manage.py createsuperuser
 python manage.py startapp core
 
 #Criacao da view responsável pela exibição da home/index na app core
-#edite o arquivo core/views.py adicione a seguinte função:
-def home(request):
-	return render(request, 'core/home.html')
+#edite o arquivo core/views.py e certifique-se que contenha:
+
+from __future__ import unicode_literals
+from django.shortcuts import render
+from django.views.generic.base import TemplateView
+
+from utils.decorators import LoginRequiredMixin
+
+# Create your views here.
+class HomeView(LoginRequiredMixin, TemplateView):
+	template_name = 'core/home.html'
 
 #crie o home.html em core/templates/core/home.html (será preciso criar os diretórios)
 
@@ -84,11 +92,13 @@ def home(request):
 touch core/urls.py
 
 #edite o arquivo core/urls.py com o seguinte conteúdo:
+
+from __future__ import unicode_literals
 from django.conf.urls import url
-from .views import home
+from .views import HomeView
 
 urlpatterns = [
-	url(r'^$', home, name='home')
+	url(r'^$', HomeView.as_view(), name='home'),
 ]
 
 #instale a app core no projeto editando o arquivo projeto/settings.py adicionando na lista INSTALLED_APPS como no exemplo:
