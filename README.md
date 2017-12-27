@@ -29,7 +29,7 @@ http://sourceforge.net/projects/git-osx-installer/
 sudo apt-get install git
 ```
 
-## Criação de um projeto exemplo:
+## Criação do projeto:
 > Passo a passo com principais atividades necessárias para iniciar um projeto. Consulte a documentação oficial do Django para mais detalhes https://www.djangoproject.com/start/
 
 > ***Objetivo:*** Projeto Django rodando localmente, versionado com Git e distribuído na plataforma Github
@@ -112,7 +112,8 @@ INSTALLED_APPS = [
 	'core',
 ]
 
-#habilite o gerenciador de URLs do projeto para trabalhar com as URLs da app core, para isto, edite o arquivo projeto/urls.py importando o urls do core, veja o exemplo:
+#habilite o gerenciador de URLs do projeto para trabalhar com as URLs da app core, para isto, edite o arquivo projeto/urls.py importando o urls do core:
+
 from django.conf.urls import url, include
 from django.contrib import admin
 
@@ -131,24 +132,21 @@ http://localhost:8000
 ```
 
 
-## Criar um modelo para persistir no Banco de Dados, Instalando a app no Django Admin (Painel), Buscando os registros do modelo numa view e mostrando no HTML
+## Criando modelo para persistir no Banco de Dados, Instalando a app no Django Admin (Painel), Buscando os registros do modelo numa view e mostrando no HTML
 ```shell
-#edite o arquivo core/models.py adicionando a classe do novo modelo conforme o exemplo:
-class Produto(models.Model):
-nome = models.CharField('Nome', max_length=70)
-data_cadastro = models.DateTimeField('data do cadastramento', auto_now_add=True)
-ativo = models.BooleanField('Ativado', default=True)
+#no diretório projeto, dentro de enfermagem, crie as apps: usuario, ....
 
-def __unicode__(self):
-return self.nome
+python manage.py startapp usuario
+python manage.py startapp ....
 
-class Meta:
-ordering = ['nome']
-verbose_name = 'Produto'
-verbose_name_plural = 'Produtos'
 
-#comando no shell criar o script para migração do Banco de Dados dos modelos da app core (script que cria as tabelas necessárias para atender o modelo especificado)
-python manage.py makemigrations core
+#edite o arquivo usuario/models.py adicionando a classe usuario. Repita isso para cada models de aplicação criada
+
+
+#criar script para migração do Banco de Dados dos modelos das apps (script que cria as tabelas necessárias para atender o modelo especificado)
+
+python manage.py makemigrations usuario
+python manage.py makemigrations ....
 
 #comando no shell para rodar as migrações da app core no Banco de Dados
 python manage.py migrate core
