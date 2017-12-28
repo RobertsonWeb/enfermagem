@@ -25,8 +25,9 @@ SECRET_KEY = '3vg%7%_ud-_(p$h1@+1(trczbf5)exb#479qp1xnobs&y-a05@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.1.7']
 
+AUTH_USER_MODEL = 'usuario.Usuario'
 
 # Application definition
 
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'core',
     'usuario',
     'categoria',
+    'instituicao',
 ]
 
 

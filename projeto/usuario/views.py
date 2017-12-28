@@ -12,13 +12,13 @@ class UsuarioListView(LoginRequiredMixin, ListView):
 
 class UsuarioCreateView(LoginRequiredMixin, CreateView):
 	model = Usuario
-	fields = ['tipo', 'nome', 'email', 'password', 'is_active']
+	fields = ['tipo', 'nome', 'email', 'password', 'instituicao', 'is_active']
 	success_url = 'usuario_list'
 
 
 class UsuarioUpdateView(LoginRequiredMixin, UpdateView):
 	model = Usuario
-	fields = ['tipo', 'nome', 'email', 'is_active']
+	fields = ['tipo', 'nome', 'email', 'instituicao', 'is_active']
 	success_url = 'usuario_list'
 
 

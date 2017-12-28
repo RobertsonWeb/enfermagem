@@ -16,6 +16,7 @@
   			<th>Nome</th>
   			<th>Tipo</th>
   			<th>E-mail</th>
+  			<th>Instituição</th>
   			<th>Último acesso</th>
   			<th class="text-center">Editar</th>
   			<th class="text-center">Excluir</th>
@@ -26,6 +27,11 @@
 					<td>{{ usuario.nome }}</td>
 					<td>{{ usuario.get_tipo_display }}</td>
 					<td>{{ usuario.email }}</td>
+					<td>
+						{% if usuario.instituicao %}
+							{{ usuario.instituicao.sigla }}
+						{% endif %}
+					</td>
 					<td>{{ usuario.last_login|date:"d/m/Y H:i" }}</td>
 					<td class="text-center">
 				          {% bootstrap_button content='' href=usuario.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}

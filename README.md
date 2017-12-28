@@ -134,24 +134,32 @@ http://localhost:8000
 
 ## Criando modelo para persistir no Banco de Dados, Instalando a app no Django Admin (Painel), Buscando os registros do modelo numa view e mostrando no HTML
 ```shell
-#no diretório projeto, dentro de enfermagem, crie as apps: usuario, ....
+#no diretório projeto, dentro de enfermagem, crie as apps: usuario, instituicao, injuria, pergunta, midia, resposta e acao
 
 python manage.py startapp usuario
+python manage.py startapp instituicao
 python manage.py startapp ....
-
 
 #edite o arquivo usuario/models.py adicionando a classe usuario. Repita isso para cada models de aplicação criada
 
-
 #criar script para migração do Banco de Dados dos modelos das apps (script que cria as tabelas necessárias para atender o modelo especificado)
 
+python manage.py makemigrations core
 python manage.py makemigrations usuario
 python manage.py makemigrations ....
 
 #comando no shell para rodar as migrações da app core no Banco de Dados
 python manage.py migrate core
+python manage.py migrate usuario
+python manage.py migrate ....
 
-#adicionar o modelo Produto da app core no Django Admin, edite o arquivo core/admin.py adicionando o que segue:
+
+
+
+
+
+
+#adicionar o modelo Usuario da app usuario no Django Admin, edite o arquivo core/admin.py adicionando o que segue:
 from django.contrib import admin
 from .models import Produto
 

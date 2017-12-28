@@ -21,6 +21,7 @@ class Usuario(AbstractBaseUser):
    email = models.EmailField(_('email'), unique=True, max_length=70, db_index=True)
    is_active = models.BooleanField(_(u'ativo'), default=False, help_text='Se ativo o usuário tem permissão para acessar o sistema')
    tipo = models.CharField(_(u'tipo do usuário'), max_length=15, choices=TIPOS, default='COMUM')
+   instituicao = models.ForeignKey('instituicao.Instituicao', null=True, blank=True)
 
    objects = UserManager()
 
