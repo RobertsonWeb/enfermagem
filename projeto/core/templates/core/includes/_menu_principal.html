@@ -16,10 +16,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class=""><a href="{% url 'home' %}"> {% bootstrap_icon 'home' %} Home <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">{% bootstrap_icon 'wallet' %} Instituição</a></li>
-        <li><a href="{% url 'categoria_list' %}">Injúrias</a></li>
-        <li><a href="#">Perguntas</a></li>
         <li><a href="{% url 'usuario_list' %}">{% bootstrap_icon 'user' %} Usuários</a></li>
+        <li><a href="#">{% bootstrap_icon 'tower' %} Instituições</a></li>
+        <li><a href="#">{% bootstrap_icon 'thumbs-down' %} Injúrias</a></li>        
+        <li><a href="#">{% bootstrap_icon 'question-sign' %} Perguntas</a></li>
+        <li><a href="#">{% bootstrap_icon 'ok-sign' %} Respostas</a></li>
+        <li><a href="#">{% bootstrap_icon 'play-circle' %} Ações</a></li>
+        
         <!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">

@@ -1,15 +1,15 @@
 {% extends 'core/base.html' %}
 {% load bootstrap3 %}
 
-{% block title %}Título{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block content %}
-Teste asdfasdf
+
 
 {% if user.is_authenticated %}
-	Voce esta autenticado
+	<p> Voce esta autenticado no sistema de triagem em primeiros-socorros para crianças até 2 anos</p>
 {% endif %}
 
-{% bootstrap_icon "time" %}
-{% bootstrap_alert "Parabéns" alert_type='success' %}
+<!-- and the c {% bootstrap_icon "time" %}
+{% bootstrap_alert "Parabéns" alert_type='success' %}-->
 {% endblock %}
