@@ -17,11 +17,12 @@ class Usuario(AbstractBaseUser):
 
    USERNAME_FIELD = 'email'
 
-   nome = models.CharField(_(u'nome'), max_length=70)
-   email = models.EmailField(_('email'), unique=True, max_length=70, db_index=True)
-   is_active = models.BooleanField(_(u'ativo'), default=False, help_text='Se ativo o usuário tem permissão para acessar o sistema')
    tipo = models.CharField(_(u'tipo do usuário'), max_length=15, choices=TIPOS, default='COMUM')
+   nome = models.CharField(_(u'nome'), max_length=100)
+   email = models.EmailField(_('email'), unique=True, max_length=100, db_index=True)
    instituicao = models.ForeignKey('instituicao.Instituicao', null=True, blank=True)
+   is_active = models.BooleanField(_(u'ativo'), default=False, help_text='Se ativo o usuário tem permissão para acessar o sistema')
+
 
    objects = UserManager()
 
@@ -53,8 +54,7 @@ class Usuario(AbstractBaseUser):
    @property
    def is_staff(self):
       if self.tipo == 'ADMINISTRADOR':
-         return True
-      
+         return True 
       return False
 
    @property
