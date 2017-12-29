@@ -16,7 +16,7 @@ class Instituicao(models.Model):
         return '%s - %s ' % (self.sigla, self.nome)
 
     def save(self, *args, **kwargs):
-        self.nome = self.nome.upper()
+        # self.nome = self.nome.upper()
         self.sigla = self.sigla.upper()
         super(Instituicao, self).save(*args, **kwargs)
 
