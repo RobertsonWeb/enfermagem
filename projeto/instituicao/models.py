@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 # Create your models here.
 class Instituicao(models.Model):
     nome = models.CharField('Nome', max_length=100)
-    sigla = models.CharField('Nome', max_length=20)
+    sigla = models.CharField('Sigla', max_length=20)
 
     class Meta:
         ordering = ['sigla']

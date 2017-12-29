@@ -18,16 +18,18 @@
   			<th class="text-center">Editar</th>
   			<th class="text-center">Excluir</th>
   		</thead>
+
   		<tbody>
   			{% for instituicao in object_list %}
 				<tr>
 					<td>{{ instituicao.nome }}</td>
 					<td>{{ instituicao.sigla }}</td>
+					
 					<td class="text-center">
-				          {% bootstrap_button content='' href=usuario.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
+				          {% bootstrap_button content='' href=instituicao.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
 				    </td>
 				    <td class="text-center">
-				          {% bootstrap_button content='' href=usuario.get_delete_url button_type='link' icon='trash' button_class='btn btn-danger' size='sm' %}
+				          {% bootstrap_button content='' href=instituicao.get_delete_url button_type='link' icon='trash' button_class='btn btn-danger' size='sm' %}
 				    </td>
 				</tr>
 			{% endfor %}

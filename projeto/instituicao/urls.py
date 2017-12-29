@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from .views import ListView, InstituicaoCreateView
+from .views import InstituicaoListView, InstituicaoCreateView
 from .views import InstituicaoUpdateView, InstituicaoDeleteView
 
 
