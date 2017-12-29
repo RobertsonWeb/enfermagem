@@ -1,9 +1,7 @@
 # coding: utf-8
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-
 from utils.decorators import LoginRequiredMixin
-
 from .models import Usuario
 
 class UsuarioListView(LoginRequiredMixin, ListView):

@@ -11,8 +11,6 @@ class Instituicao(models.Model):
 
     class Meta:
         ordering = ['sigla']
-        verbose_name        =   _(u'instituição')
-      	verbose_name_plural =   _(u'instituições')
 
     def __unicode__(self):
         return '%s - %s ' % (self.sigla, self.nome)
