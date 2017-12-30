@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 
 # Create your models here.
@@ -23,3 +23,7 @@ class Instituicao(models.Model):
     @property
     def get_absolute_url(self):
         return reverse('instituicao_update', args=[str(self.id)])
+
+    @property
+    def get_delete_url(self):
+        return reverse('instituicao_delete', args=[str(self.id)])

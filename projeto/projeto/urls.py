@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'usuario/', include('usuario.urls')),
     url(r'categoria/', include('categoria.urls')),
     url(r'instituicao/', include('instituicao.urls')),
+    url(r'injuria/', include('injuria.urls')),
     url(r'^accounts/', include('django.contrib.auth.urls'))
 ]

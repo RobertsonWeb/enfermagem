@@ -3,9 +3,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-
 from utils.decorators import LoginRequiredMixin
-
 from .models import Instituicao
 
 # Create your views here.
