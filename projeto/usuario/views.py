@@ -9,16 +9,14 @@ from .models import Usuario
 class UsuarioListView(LoginRequiredMixin, ListView):
 	model = Usuario
 
-
 class UsuarioCreateView(LoginRequiredMixin, CreateView):
 	model = Usuario
-	fields = ['tipo', 'nome', 'email', 'password', 'is_active']
+	fields = ['tipo', 'nome', 'email', 'instituicao', 'password', 'is_active']
 	success_url = 'usuario_list'
-
 
 class UsuarioUpdateView(LoginRequiredMixin, UpdateView):
 	model = Usuario
-	fields = ['tipo', 'nome', 'email', 'is_active']
+	fields = ['tipo', 'nome', 'email', 'instituicao', 'is_active']
 	success_url = 'usuario_list'
 
 
