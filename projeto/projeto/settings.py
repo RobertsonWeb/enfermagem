@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'categoria',
     'instituicao',
     'injuria',
+    'midia',
 ]
 
 
