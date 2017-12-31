@@ -15,9 +15,9 @@ class Usuario(AbstractBaseUser):
 
     USERNAME_FIELD = 'email'
 
-    tipo = models.CharField(_(u'tipo do usuário'), max_length=15, choices=TIPOS, default='COMUM')
-    nome = models.CharField(_(u'nome'), max_length=100)
-    email = models.EmailField(_('email'), unique=True, max_length=100, db_index=True)
+    tipo = models.CharField(_(u'Tipo do usuário'), max_length=15, choices=TIPOS, default='COMUM')
+    nome = models.CharField(_(u'Nome'), max_length=100)
+    email = models.EmailField(_('Email'), unique=True, max_length=100, db_index=True)
     instituicao = models.ForeignKey('instituicao.Instituicao', null=True, blank=True)
     is_active = models.BooleanField(_(u'ativo'), default=False, help_text='Se ativo o usuário tem permissão para acessar o sistema')
 

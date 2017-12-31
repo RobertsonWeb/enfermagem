@@ -5,8 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 
 class Injuria(models.Model):
-    nome = models.CharField(_(u'nome'), max_length=250)
-    descricao = models.TextField(_(u'descricao')) 
+    nome = models.CharField(_(u'Nome principal da injúria'), max_length=250)
+    descricao = models.TextField(_(u'Descrição da injúria')) 
     instituicao = models.ForeignKey('instituicao.Instituicao', null=True, blank=True)
     midia_texto = models.ForeignKey('midia.Midia', null=True, blank=True)
 

@@ -13,13 +13,13 @@ class MidiaListView(LoginRequiredMixin, ListView):
 
 class MidiaCreateView(LoginRequiredMixin, CreateView):
 	model = Midia
-	fields = ['tipo', 'legenda']
+	fields = ['tipo', 'legenda', 'arquivo']
 	success_url = 'midia_list'
 
 
 class MidiaUpdateView(LoginRequiredMixin, UpdateView):
 	model = Midia
-	fields = ['tipo', 'legenda']
+	fields = ['tipo', 'legenda', 'arquivo']
 	success_url = 'midia_list'
 
 

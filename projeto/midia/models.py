@@ -15,8 +15,8 @@ class Midia(models.Model):
     )
     legenda = models.CharField('Legenda', max_length=250)
     tipo = models.CharField(_(u'Tipo de mídia'), max_length=7, choices=TIPOS, default='TEXTO')
+    arquivo = models.TextField(_(u'Caminho do arquivo'), null=True, blank=True)
     
-
     class Meta:
         ordering = ['tipo']
 

@@ -15,6 +15,7 @@
   		<thead>
   			<th>Tipo</th>
   			<th>Legenda</th>
+  			<th>Arquivo</th>
   			<th class="text-center">Editar</th>
   			<th class="text-center">Excluir</th>
   		</thead>
@@ -24,7 +25,7 @@
 				<tr>
 					<td>{{ midia.tipo }}</td>
 					<td>{{ midia.legenda }}</td>
-					
+					<td>{{ midia.arquivo }}</td>
 					<td class="text-center">
 				          {% bootstrap_button content='' href=midia.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
 				    </td>
