@@ -12,12 +12,12 @@ class InjuriaListView(LoginRequiredMixin, ListView):
 
 class InjuriaCreateView(LoginRequiredMixin, CreateView):
 	model = Injuria
-	fields = ['nome', 'descricao', 'instituicao']
+	fields = ['nome', 'descricao', 'midia_texto' ,'instituicao']
 	success_url = 'injuria_list'
 
 class InjuriaUpdateView(LoginRequiredMixin, UpdateView):
 	model = Injuria
-	fields = ['nome', 'descricao', 'instituicao']
+	fields = ['nome', 'descricao', 'midia_texto', 'instituicao']
 	success_url = 'injuria_list'
 
 class InjuriaDeleteView(LoginRequiredMixin, DeleteView):

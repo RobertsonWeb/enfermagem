@@ -8,6 +8,7 @@ class Injuria(models.Model):
     nome = models.CharField(_(u'nome'), max_length=250)
     descricao = models.TextField(_(u'descricao')) 
     instituicao = models.ForeignKey('instituicao.Instituicao', null=True, blank=True)
+    midia_texto = models.ForeignKey('midia.Midia', null=True, blank=True)
 
     class Meta:
         ordering = [u'nome']

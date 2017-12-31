@@ -15,12 +15,13 @@ class Midia(models.Model):
     )
     legenda = models.CharField('Legenda', max_length=250)
     tipo = models.CharField(_(u'Tipo de mídia'), max_length=7, choices=TIPOS, default='TEXTO')
+    
 
     class Meta:
         ordering = ['tipo']
 
     def __unicode__(self):
-        return self.tipo
+        return '%s - %s ' % (self.tipo, self.legenda)
 
     def save(self, *args, **kwargs):
         self.tipo = self.tipo.upper()
