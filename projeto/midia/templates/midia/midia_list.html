@@ -25,7 +25,13 @@
 				<tr>
 					<td>{{ midia.tipo }}</td>
 					<td>{{ midia.legenda }}</td>
-					<td>{{ midia.arquivo }}</td>
+					<td>
+						{% if midia.arquivo %}
+							{% bootstrap_button content='' href=midia.arquivo button_type='link' icon='download' button_class='btn btn-primary' size='sm' %}
+						{% else %}
+							{% bootstrap_button content='' button_type='link' icon='download' button_class='btn btn-primary disabled' size='sm' %}
+						{% endif %}
+					</td>
 					<td class="text-center">
 				          {% bootstrap_button content='' href=midia.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
 				    </td>
