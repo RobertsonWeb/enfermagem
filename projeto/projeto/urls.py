@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'instituicao/', include('instituicao.urls')),
     url(r'injuria/', include('injuria.urls')),
     url(r'midia/', include('midia.urls')),
-    url(r'^accounts/', include('django.contrib.auth.urls'))
+    url(r'pergunta/', include('pergunta.urls')),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
 ]

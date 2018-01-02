@@ -6,7 +6,6 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from utils.decorators import LoginRequiredMixin
 from .models import Injuria
 
-
 class InjuriaListView(LoginRequiredMixin, ListView):
 	model = Injuria
 

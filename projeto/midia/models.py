@@ -3,6 +3,10 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
+# from django.http import HttpResponseRedirect
+from django.shortcuts import render
+# from .forms import UploadFileForm
+# from .models import ModelWithFileField
 
 # Create your models here.
 class Midia(models.Model):
@@ -16,7 +20,18 @@ class Midia(models.Model):
     legenda = models.CharField('Legenda', max_length=250)
     tipo = models.CharField(_(u'Tipo de mídia'), max_length=7, choices=TIPOS, default='TEXTO')
     arquivo = models.TextField(_(u'Caminho do arquivo'), null=True, blank=True)
-    
+
+    # def upload_file(request):
+    #     if request.method == 'POST':
+    #         form = UploadFileForm(request.POST, request.FILES)
+    #         if form.is_valid():
+    #             instance = ModelWithFileField(file_field=request.FILES['file'])
+    #             instance.save()
+    #             return HttpResponseRedirect('/success/url/')
+    #     else:
+    #         form = UploadFileForm()
+    #     return render(request, 'upload.html', {'form': form})
+
     class Meta:
         ordering = ['tipo']
 
