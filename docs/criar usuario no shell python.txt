@@ -1,0 +1,6 @@
+#criar usuario no shell python
+from django.apps import apps
+Usuario = apps.get_model('usuario', 'Usuario')
+me = Usuario.objects.create(tipo='COMUM', nome='Dirce', email='dirce@unifra.br', instituicao=, is_active='True')
+me.set_password('asdfqwer')
+me.save()

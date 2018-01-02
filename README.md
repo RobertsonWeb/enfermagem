@@ -140,7 +140,57 @@ python manage.py startapp usuario
 python manage.py startapp instituicao
 python manage.py startapp ....
 
-#edite o arquivo usuario/models.py adicionando a classe usuario. Repita isso para cada models de aplicação criada
+#edite o arquivo models.py dentro da app criada, adicionando a classe referente a app. Repita isso para cada models de aplicação criada
+
+#edite o arquivo views.py dentro da app criada, adicionando os métodos referentes a app. Repita isso para cada classe de aplicação criada. Por exemplo:
+
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .models import ClasseCriada
+
+class ClasseCriadaListView(LoginRequiredMixin, ListView):
+	model = ClasseCriada
+
+class ClasseCriadaCreateView(LoginRequiredMixin, CreateView):
+	model = ClasseCriada
+	fields = ['campo1', 'campo2', 'campo3' ,'....']
+	success_url = 'app_criada_list'
+
+class ClasseCriadaUpdateView(LoginRequiredMixin, UpdateView):
+	model = ClasseCriada
+	fields = ['campo1', 'campo2', 'campo3' ,'....']
+	success_url = 'app_criada_list'
+
+class InjuriaDeleteView(LoginRequiredMixin, DeleteView):
+	model = ClasseCriada
+	fields = ['campo1', 'campo2', 'campo3' ,'....']
+
+
+#instale a app criada no projeto editando o arquivo projeto/settings.py adicionando na lista INSTALLED_APPS:
+
+INSTALLED_APPS = [
+	'django.contrib.admin',
+	'django.contrib.auth',
+	'django.contrib.contenttypes',
+	'django.contrib.sessions',
+	'django.contrib.messages',
+	'django.contrib.staticfiles',
+	'core',
+	'usuario',
+	'instituicao',
+	'...'
+]
+
+#habilite o gerenciador de URLs do projeto para trabalhar com as URLs da app criada. Para isto, edite o arquivo projeto/urls.py importando o urls da app criada:
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'', include('core.urls')),
+    url(r'usuario/', include('usuario.urls')),
+    url(r'instituicao/', include('instituicao.urls')),
+    url(r'.../', include('....urls')),
+    url(r'^accounts/', include('django.contrib.auth.urls'))
+]
 
 #criar script para migração do Banco de Dados dos modelos das apps (script que cria as tabelas necessárias para atender o modelo especificado)
 
@@ -153,107 +203,6 @@ python manage.py migrate core
 python manage.py migrate usuario
 python manage.py migrate ....
 
-
-
-
-
-
-
-#adicionar o modelo Usuario da app usuario no Django Admin, edite o arquivo core/admin.py adicionando o que segue:
-from django.contrib import admin
-from .models import Produto
-
-class ProdutoAdmin(admin.ModelAdmin):
-list_display = ['nome', 'data_cadastro','ativo']
-search_fields = ['nome']
-
-admin.site.register(Produto, ProdutoAdmin)
-
-#acesse o Django Admin via navegador (precisará usar o login e senha cadastrados quando o superusuário foi criado)
-http://localhost:8000/admin
-
-#listando os produtos cadastrados na home.html, primeiramente será necessário selecionar os produtos na view home, para isto edite core/views.py e altere a view home conforme o exemplo:
-from .models import Produto
-
-def home(request):
-produtos_ativos = Produto.objects.filter(ativo=True)
-return render(request, 'core/home.html', {'produtos': produtos_ativos})
-
-#edite o core/templates/core/home.html adicionando o seguinte conteúdo
-{% for produto in produtos %}
-<p>{{ produto.data_cadastro|date:"d/m/Y h:i" }} - {{ produto.nome }}</p>
-{% empty %}
-<p>Nenhum cadastro de produto ativo no momento.</p>
-{% endfor %}
-
-#rode o projeto e acesse via navegador
-python manage.py runserver
-
-http://localhost:8000
 ```
 ## Dicas - Trabalhando com Querysets
 > ***Mais detalhes na documentação oficial do Django:*** https://docs.djangoproject.com/en/1.11/ref/models/querysets/
-
-```shell
-#Levar em consideração os seguintes modelos:
-
-class Entrega(models.Model):
-mercadoria = models.CharField('Mercadoria', max_length=70)
-endereco_cliente = models.CharField(u'Endereço', max_length=100)
-data_cadastro = models.DateTimeField('Dt. cadastro',  auto_now_add=True)
-
-def __unicode__(self):
-return self.mercadoria
-
-
-class Rastreamento(models.Model):
-entrega = models.ForeignKey(Entrega)
-data = models.DateTimeField('data cadastro', auto_now_add=True)
-local = models.CharField('local', max_length=20)
-ocorrencia = models.CharField(u'ocorrência', max_length=100)
-origem = models.CharField('origem', max_length=20)
-destino = models.CharField('destino', max_length=20)
-
-def __unicode__(self):
-return 'o: %s  d: %s' % (self.origem, self.destino)
-
-#Buscar todas entregas cujo mercadoria contenha a string 'bola':
-Entrega.objects.filter(mercadoria__icontains='bola')
-
-#Buscar todas entregas de um determinado período:
-Entrega.objects.filter(data__range=(data1, data2))
-#Onde data1 e data2 são objetos do tipo Date ou DateTime
-
-#Buscar todas entregas de um determinado período, exceto a que a mercadoria contenha a string 'bola':
-Entrega.objects.filter(data__range=(data1, data2)).exclude(mercadoria__icontains='bola')
-#Onde data1 e data2 são objetos do tipo Date ou DateTime
-
-#Contar quantas entregas ocorreram no período:
-Entrega.objects.filter(data__range=(data1, data2)).count()
-#Retorna um inteiro
-
-#Ordenar pela data da entrega:
-Entrega.objects.all().order_by('data') #ordem ascendente
-Entrega.objects.all().order_by('-data') #ordem descendente
-
-#Retornar o primeiro ou o último objeto da queryset:
-Entrega.objects.all().first()
-Entrega.objects.all().last()
-
-#Todos os rastreamentos de uma determinada entrega:
-Rastreamento.objects.filter(entrega=obj_entrega)
-#Onde obj_entrega é um objeto da classe Entrega
-
-#Buscar um objeto pela chave primária 10
-Rastreamento.objects.get(id=10)
-Rastreamento.objects.get(pk=10)
-#Retorna um objeto da classe Rastreamento
-
-#Todos os rastreamentos onde a origem foi Santa Maria e que a mercadoria contenha a string 'bola':
-Rastreamento.objects.filter(origem__contains='Santa Maria', entrega__mercadoria__icontains='bola')
-
-#Buscar todos rastreamentos que passaram por cidades onde o nome inicia com a palavra “Santa”
-from django.db.models import Q
-Rastreamento.objects.filter(Q(origem__startwith = 'Santa') | Q(destino__startwith = 'Santa'))
-#Retorna um objeto da classe Rastreamento
-```
