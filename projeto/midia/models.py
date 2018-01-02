@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.conf import settings
 from django.db import models
 from django.db.models import signals
 from django.dispatch import receiver
@@ -37,6 +38,9 @@ class Midia(models.Model):
     def get_delete_url(self):
         return reverse('midia_delete', args=[str(self.id)])
 
+    @property
+    def get_arquivo_url(self):
+        return '%s/%s' % (settings.MEDIA_URL, self.arquivo)
 
 #deleta os arquivo fisico ao excluir o item midia
 @receiver(models.signals.post_delete, sender=Midia)
