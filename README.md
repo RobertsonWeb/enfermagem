@@ -192,6 +192,20 @@ urlpatterns = [
     url(r'^accounts/', include('django.contrib.auth.urls'))
 ]
 
+#crie o arquivo urls.py dentro da pasta da app criada. Por exemplo:
+
+from django.conf.urls import url
+from .views import ClasseCriadaListView, ClasseCriadaCreateView
+from .views import ClasseCriadaUpdateView, ClasseCriadaDeleteView
+
+
+urlpatterns = [
+	url(r'list/$', ClasseCriadaListView.as_view(), name='app_criada_list'),
+	url(r'cad/$', ClasseCriadaCreateView.as_view(), name='app_criada_create'),
+	url(r'(?P<pk>\d+)/$', ClasseCriadaUpdateView.as_view(), name='app_criada_update'),
+	url(r'(?P<pk>\d+)/delete/$', ClasseCriadaDeleteView.as_view(), name='app_criada_delete'),
+]
+
 #criar script para migração do Banco de Dados dos modelos das apps (script que cria as tabelas necessárias para atender o modelo especificado)
 
 python manage.py makemigrations core
