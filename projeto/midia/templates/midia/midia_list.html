@@ -11,29 +11,41 @@
 	    <a href="{% url 'midia_create' %}" class="btn btn-md btn-primary">{% bootstrap_icon 'floppy-disk' %} Cadastrar Mídia</a>
 	  </div>
 	</div>
-	<table class="table table-hover">
-  		<thead>
-  			<th>Tipo</th>
-  			<th>Legenda</th>
-  			<th>Arquivo</th>
-  			<th class="text-center">Editar</th>
-  			<th class="text-center">Excluir</th>
-  		</thead>
+	<div class="table-responsive">
+		<table class="table table-hover">
+	  		<thead>
+	  			<th>Tipo</th>
+	  			<th>Legenda</th>
+	  			<th>Arquivo</th>
+	  			<th class="text-center">Editar</th>
+	  			<th class="text-center">Excluir</th>
+	  		</thead>
 
-  		<tbody>
-  			{% for midia in object_list %}
-				<tr>
-					<td>{{ midia.tipo }}</td>
-					<td>{{ midia.legenda }}</td>
-					<td>{{ midia.arquivo }}</td>
-					<td class="text-center">
-				          {% bootstrap_button content='' href=midia.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
-				    </td>
-				    <td class="text-center">
-				          {% bootstrap_button content='' href=midia.get_delete_url button_type='link' icon='trash' button_class='btn btn-danger' size='sm' %}
-				    </td>
-				</tr>
-			{% endfor %}
-  		</tbody>
-	</table>
+	  		<tbody>
+	  			{% for midia in object_list %}
+					<tr>
+						<td>{{ midia.tipo }}</td>
+						<td>{{ midia.legenda }}</td>
+						<td>
+							{% if midia.arquivo %}
+								<a href="{{ midia.get_arquivo_url }}" target="_blank" class="btn btn-sm btn-primary">
+									{% bootstrap_icon 'download' %}
+								</a>
+							{% else %}
+								<a href="" target="_blank" class="btn btn-sm btn-primary disabled">
+									{% bootstrap_icon 'download' %}
+								</a>
+							{% endif %}
+						</td>
+						<td class="text-center">
+					          {% bootstrap_button content='' href=midia.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
+					    </td>
+					    <td class="text-center">
+					          {% bootstrap_button content='' href=midia.get_delete_url button_type='link' icon='trash' button_class='btn btn-danger' size='sm' %}
+					    </td>
+					</tr>
+				{% endfor %}
+	  		</tbody>
+		</table>
+	</div>
 {% endblock %}

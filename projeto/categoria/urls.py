@@ -1,7 +1,5 @@
 from django.conf.urls import url
-
 from .views import CategoriaListView, CategoriaCreateView, CategoriaUpdateView
-
 
 urlpatterns = [
 	url(r'list/$', CategoriaListView.as_view(), name='categoria_list'),
