@@ -49,7 +49,6 @@ def auto_delete_file_on_delete(sender, instance, **kwargs):
         if os.path.isfile(instance.arquivo.path):
             os.remove(instance.arquivo.path)
 
-
 #deleta o arquivo fisico ao alterar o arquivo do item midia
 @receiver(models.signals.pre_save, sender=Midia)
 def auto_delete_file_on_change(sender, instance, **kwargs):
