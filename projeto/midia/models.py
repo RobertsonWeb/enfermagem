@@ -44,7 +44,7 @@ class Midia(models.Model):
 
     @property
     def get_arquivo_url(self):
-        return '%s/%s' % (settings.MEDIA_URL, self.arquivo)
+        return '%s%s' % (settings.MEDIA_URL, self.arquivo)
 
 #deleta os arquivo fisico ao excluir o item midia
 @receiver(models.signals.post_delete, sender=Midia)
