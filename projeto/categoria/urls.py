@@ -1,5 +1,4 @@
 from django.conf.urls import url
-
 from .views import CategoriaListView, CategoriaCreateView, CategoriaUpdateView
 
 urlpatterns = [
